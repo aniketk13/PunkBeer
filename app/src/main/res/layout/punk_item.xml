@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/beerImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/beerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/beerImage"/>
+    <TextView
+        android:id="@+id/beerDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Brewed Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/beerName"/>
+
+    <TextView
+        android:id="@+id/beerVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="v/v"
+        app:layout_constraintTop_toTopOf="@id/beerName"
+        app:layout_constraintBottom_toBottomOf="@id/beerDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

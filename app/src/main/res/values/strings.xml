@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">JumpingMinds</string>
+    <string-array name="PunkFilter">
+        <item>Beer</item>
+        <item>Food</item>
+        <item>Hops</item>
+        <item>Malt</item>
+        <item>Yeast</item>
+    </string-array>
 </resources>
