@@ -16,6 +16,7 @@ import com.example.jumpingminds.RecyclerAdapter
 import com.example.jumpingminds.databinding.FragmentHomeBinding
 import com.smarteist.autoimageslider.SliderView
 
+
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
@@ -42,6 +43,7 @@ class HomeFragment : Fragment() {
                 if (p0 != null) {
                     searchText = p0.replace(" ", "_")
                     Log.i("helloabc", searchText)
+
                     findNavController().navigate(
                         HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(
                             binding.dropdownMenu.text.toString(),
