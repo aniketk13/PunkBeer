@@ -14,9 +14,13 @@ class HomeViewModel : ViewModel() {
     val requests: LiveData<ArrayList<Beer>>
         get() = _requests
 
-    private val _beer:MutableLiveData<Beer> = MutableLiveData()
-    val beer:LiveData<Beer>
-        get()=_beer
+    private val _randomBeer: MutableLiveData<ArrayList<Beer>> = MutableLiveData()
+    val randomBeer: LiveData<ArrayList<Beer>>
+        get() = _randomBeer
+
+    private val _beerABV: MutableLiveData<ArrayList<Beer>> = MutableLiveData()
+    val beerABV: LiveData<ArrayList<Beer>>
+        get() = _beerABV
 
     fun getBeer() {
         viewModelScope.launch {
@@ -29,6 +33,29 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+    fun getRandomBeer(){
+        viewModelScope.launch {
+            try {
+                val response=RetrofitInstance.api.getRandomBeer()
+                _randomBeer.value=response
+            }catch (e:Exception){
+                Log.i("Error", e.toString())
+            }
+        }
+    }
+
+    fun getBeerByABV(){
+        viewModelScope.launch {
+            try {
+                val response=RetrofitInstance.api.getBeerByABV("30")
+                _beerABV.value=response
+            }catch (e:Exception){
+                Log.i("Error", e.toString())
+            }
+        }
+    }
+
 
     fun getBeerByBeerName(beer_name:String){
         viewModelScope.launch {
