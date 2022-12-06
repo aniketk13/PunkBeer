@@ -1,7 +1,6 @@
 package com.example.jumpingminds.api
 
 import com.example.jumpingminds.api.models.Beer
-import com.example.jumpingminds.api.models.Beers
 import retrofit2.http.GET
 import retrofit2.http.Query
 

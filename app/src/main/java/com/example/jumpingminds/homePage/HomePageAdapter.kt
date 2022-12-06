@@ -1,6 +1,5 @@
-package com.example.jumpingminds
+package com.example.jumpingminds.homePage
 
-import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jumpingminds.R
 import com.example.jumpingminds.api.models.Beer
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,11 +41,11 @@ class HomePageAdapter(
         val signature = signatureList[position]
         holder.beerName.text = signature.name
         holder.beerDate.text = signature.first_brewed
-        holder.beerVolume.text=signature.abv.toString()
+        holder.beerVolume.text=signature.abv.toString()+" %"
 //        holder.beerImage.setImageURI(signature.image_url.toUri())
         holder.beerImage.clipToOutline=true
         Picasso.with(holder.beerImage.context).load(signature.image_url).into(holder.beerImage)
-        Log.i("helloabc",signature.image_url.toUri().toString())
+//        Log.i("helloabc",signature.image_url.toUri().toString())
 
 //        holder.itemView.setOnClickListener {
 //            itemClickListener.onItemClick(signatureList[position], position)
@@ -56,10 +55,10 @@ class HomePageAdapter(
     override fun getItemCount(): Int {
         return signatureList.size
     }
-
-    private fun convertLongToTime(createdAt: Long): String {
-        val simpleDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
-        val date = simpleDateFormat.format(createdAt * 1000L)
-        return date
-    }
+//
+//    private fun convertLongToTime(createdAt: Long): String {
+//        val simpleDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
+//        val date = simpleDateFormat.format(createdAt * 1000L)
+//        return date
+//    }
 }

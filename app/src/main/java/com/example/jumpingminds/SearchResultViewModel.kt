@@ -7,10 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jumpingminds.api.RetrofitInstance
 import com.example.jumpingminds.api.models.Beer
-import com.example.jumpingminds.api.models.Beers
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class SearchResultViewModel : ViewModel() {
     private val _requests: MutableLiveData<ArrayList<Beer>> = MutableLiveData()
     val requests: LiveData<ArrayList<Beer>>
         get() = _requests
