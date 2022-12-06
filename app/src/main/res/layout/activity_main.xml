@@ -8,13 +8,13 @@
 
 
     <androidx.fragment.app.FragmentContainerView
-app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graphs"
         tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="162dp"
-        app:navGraph="@navigation/nav_graphs"/>
+        tools:layout_editor_absoluteY="162dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

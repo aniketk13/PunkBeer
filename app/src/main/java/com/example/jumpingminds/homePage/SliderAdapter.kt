@@ -1,11 +1,11 @@
-package com.example.jumpingminds
+package com.example.jumpingminds.homePage
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
+import com.example.jumpingminds.R
 import com.example.jumpingminds.api.models.Beer
 import com.smarteist.autoimageslider.SliderViewAdapter
 import com.squareup.picasso.Picasso
@@ -27,7 +27,7 @@ class SliderAdapter(slideList: ArrayList<Beer>) :
     }
 
     // on below line we are calling on create view holder method.
-    override fun onCreateViewHolder(parent: ViewGroup?): SliderAdapter.SliderViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup?): SliderViewHolder {
         // inside this method we are inflating our layout file for our slider view.
         val inflate: View =
             LayoutInflater.from(parent!!.context).inflate(R.layout.slider_item, null)
@@ -38,7 +38,7 @@ class SliderAdapter(slideList: ArrayList<Beer>) :
     }
 
     // on below line we are calling on bind view holder method to set the data to our image view.
-    override fun onBindViewHolder(viewHolder: SliderAdapter.SliderViewHolder?, position: Int) {
+    override fun onBindViewHolder(viewHolder: SliderViewHolder?, position: Int) {
 
         // on below line we are checking if the view holder is null or not.
         if (viewHolder != null) {
@@ -46,10 +46,11 @@ class SliderAdapter(slideList: ArrayList<Beer>) :
             // loading the image inside our image view using glide library
 //            Glide.with(viewHolder.itemView).load(sliderList.get(position)).fitCenter()
 //                .into(viewHolder.imageView)
-            val beer=sliderList[position]
-            Picasso.with(viewHolder.itemView.context).load(beer.image_url).into(viewHolder.imageView)
-            viewHolder.beerName.text=beer.name
-            viewHolder.beerVolume.text=beer.abv.toString()
+            val beer = sliderList[position]
+            Picasso.with(viewHolder.itemView.context).load(beer.image_url)
+                .into(viewHolder.imageView)
+            viewHolder.beerName.text = beer.name
+            viewHolder.beerVolume.text = beer.abv.toString()
 //            viewHolder.beerName.text=viewHolder.itemView
         }
     }
@@ -60,7 +61,7 @@ class SliderAdapter(slideList: ArrayList<Beer>) :
         // on below line we are creating a variable for our
         // image view and initializing it with image id.
         var imageView: ImageView = itemView!!.findViewById(R.id.myimage)
-        var beerName:TextView=itemView!!.findViewById(R.id.beer_name)
-        var beerVolume:TextView=itemView!!.findViewById(R.id.beer_volume)
+        var beerName: TextView = itemView!!.findViewById(R.id.beer_name)
+        var beerVolume: TextView = itemView!!.findViewById(R.id.beer_volume)
     }
 }

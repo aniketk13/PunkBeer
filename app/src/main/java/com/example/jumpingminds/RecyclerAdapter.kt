@@ -1,24 +1,19 @@
-package com.example.jumpingminds.homePage
+package com.example.jumpingminds
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jumpingminds.R
 import com.example.jumpingminds.api.models.Beer
 import com.squareup.picasso.Picasso
-import java.text.SimpleDateFormat
-import java.util.*
 
-class HomePageAdapter(
+class RecyclerAdapter(
     private val signatureList: ArrayList<Beer>,
 //    private val itemClickListener: ItemClickListener
 ) :
-    RecyclerView.Adapter<HomePageAdapter.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
 //    interface ItemClickListener {
 //        fun onItemClick(signature: Beer, position: Int)
@@ -41,9 +36,9 @@ class HomePageAdapter(
         val signature = signatureList[position]
         holder.beerName.text = signature.name
         holder.beerDate.text = signature.first_brewed
-        holder.beerVolume.text=signature.abv.toString()+" %"
+        holder.beerVolume.text = signature.abv.toString() + " %"
 //        holder.beerImage.setImageURI(signature.image_url.toUri())
-        holder.beerImage.clipToOutline=true
+        holder.beerImage.clipToOutline = true
         Picasso.with(holder.beerImage.context).load(signature.image_url).into(holder.beerImage)
 //        Log.i("helloabc",signature.image_url.toUri().toString())
 

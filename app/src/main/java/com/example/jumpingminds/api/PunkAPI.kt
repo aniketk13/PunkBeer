@@ -27,5 +27,5 @@ interface PunkAPI {
     suspend fun getBeerByFood(@Query("food") food: String): ArrayList<Beer>
 
     @GET("/v2/beers")
-    suspend fun getBeerByABV(@Query("abv_gt") abv_gt:String):ArrayList<Beer>
+    suspend fun getBeerByABV(@Query("abv_gt") abv_gt: String): ArrayList<Beer>
 }

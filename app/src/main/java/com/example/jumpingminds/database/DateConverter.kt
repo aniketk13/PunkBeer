@@ -1,17 +1,16 @@
 package com.example.jumpingminds.database
 
 import androidx.room.TypeConverter
-import androidx.room.TypeConverters
 import java.util.*
 
 class DateConverter {
     @TypeConverter
-    fun fromTimeStamp(value:Long): Date {
+    fun fromTimeStamp(value: Long): Date {
         return Date(value)
     }
 
     @TypeConverter
-    fun dateToTimeStamp(date:Date):Long{
+    fun dateToTimeStamp(date: Date): Long {
         return date.time
     }
 }

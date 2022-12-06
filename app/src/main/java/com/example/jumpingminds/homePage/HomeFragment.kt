@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jumpingminds.R
-import com.example.jumpingminds.SliderAdapter
+import com.example.jumpingminds.RecyclerAdapter
 import com.example.jumpingminds.databinding.FragmentHomeBinding
 import com.smarteist.autoimageslider.SliderView
 
@@ -20,9 +20,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
     private var searchText = ""
-    lateinit var imageUrl:ArrayList<String>
-    // on below line we are creating
-    // a variable for our slider adapter.
+
+    // on below line we are creating a variable for our slider adapter.
     lateinit var sliderAdapter: SliderAdapter
 
     override fun onCreateView(
@@ -32,21 +31,26 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
         viewModel.getBeer()
-        imageUrl= ArrayList()
 
         val filter = resources.getStringArray(R.array.PunkFilter)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, filter)
         binding.dropdownMenu.setAdapter(arrayAdapter)
-        binding.searchBeer.queryHint="Search ${binding.dropdownMenu.text}"
-        binding.searchBeer.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+
+        binding.searchBeer.queryHint = "Search ${binding.dropdownMenu.text}"
+        binding.searchBeer.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
-                    searchText=p0.replace(" ","_")
-                    Log.i("helloabc",searchText)
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(binding.dropdownMenu.text.toString(),searchText))
+                    searchText = p0.replace(" ", "_")
+                    Log.i("helloabc", searchText)
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(
+                            binding.dropdownMenu.text.toString(),
+                            searchText
+                        )
+                    )
                 }
-                Log.i("helloabc",searchText)
-                Log.i("helloabc",binding.dropdownMenu.text.toString())
+                Log.i("helloabc", searchText)
+                Log.i("helloabc", binding.dropdownMenu.text.toString())
                 return true
             }
 
@@ -56,44 +60,33 @@ class HomeFragment : Fragment() {
 
         })
         viewModel.getBeerByABV()
-        viewModel.beerABV.observe(requireActivity()){
-            binding.recyclerView2.adapter=HomePageAdapter(it)
-            binding.recyclerView2.layoutManager=
+        viewModel.beerABV.observe(requireActivity()) {
+            binding.recyclerView2.adapter = RecyclerAdapter(it)
+            binding.recyclerView2.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
         viewModel.requests.observe(requireActivity()) {
-            binding.recyclerView.adapter = HomePageAdapter(it)
+            binding.recyclerView.adapter = RecyclerAdapter(it)
             binding.recyclerView.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-            for(i in 0..2)
-                imageUrl.add(it[i].image_url)
-
-            // on below line we are initializing our
-            // slider adapter and adding our list to it.
-            sliderAdapter = SliderAdapter( it)
-            // on below line we are setting auto cycle direction
-            // for our slider view from left to right.
+            // on below line we are initializing our slider adapter and adding our list to it.
+            sliderAdapter = SliderAdapter(it)
+            // on below line we are setting auto cycle direction for our slider view from left to right.
             binding.imageSlider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
 
             // on below line we are setting adapter for our slider.
             binding.imageSlider.setSliderAdapter(sliderAdapter)
 
-            // on below line we are setting scroll time
-            // in seconds for our slider view.
+            // on below line we are setting scroll time in seconds for our slider view.
             binding.imageSlider.scrollTimeInSec = 3
 
-            // on below line we are setting auto cycle
-            // to true to auto slide our items.
+            // on below line we are setting auto cycle to true to auto slide our items.
             binding.imageSlider.isAutoCycle = true
 
-            // on below line we are calling start
-            // auto cycle to start our cycle.
+            // on below line we are calling start auto cycle to start our cycle.
             binding.imageSlider.startAutoCycle()
         }
-//        viewModel.randomBeer.observe(requireActivity()){
-//            imageUrl.add(it[0].image_url)
-//        }
         return binding.root
     }
 
