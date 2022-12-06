@@ -12,6 +12,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -62,6 +63,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header">
 
@@ -106,6 +108,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Previously Viewed Items"
                 android:textFontWeight="@integer/material_motion_duration_medium_2"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@id/recyclerView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sliderCard" />
@@ -124,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:text="Premium Strong Collection"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 

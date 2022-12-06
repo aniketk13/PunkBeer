@@ -6,8 +6,9 @@
 
     <ImageView
         android:id="@+id/myimage"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -15,8 +16,10 @@
         android:id="@+id/beer_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:text="Hello World"
-        app:layout_constraintBottom_toBottomOf="@id/myimage"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/myimage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +28,9 @@
         android:id="@+id/beer_volume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/myimage"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/beer_name"
+
         app:layout_constraintTop_toBottomOf="@id/beer_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

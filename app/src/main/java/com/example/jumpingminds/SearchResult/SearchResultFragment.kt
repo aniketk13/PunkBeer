@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.jumpingminds.RecyclerAdapter
 import com.example.jumpingminds.databinding.FragmentSearchResultBinding
 
 class SearchResultFragment : Fragment() {
@@ -32,14 +33,21 @@ class SearchResultFragment : Fragment() {
             "Food" -> viewModel.getBeerByFood(searchText)
         }
         viewModel.requests.observe(requireActivity()) {
-            binding.recyclerView.adapter = RecyclerAdapter(it)
+            binding.recyclerView.adapter = SearchResultAdapter(it)
             binding.recyclerView.layoutManager = LinearLayoutManager(
-                activity,
-                LinearLayoutManager.HORIZONTAL, false
+                activity, LinearLayoutManager.VERTICAL, false
             )
         }
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(SearchResultFragmentDirections.actionSearchResultFragmentToHomeFragment())
+            }
+        })
+    }
 
 }

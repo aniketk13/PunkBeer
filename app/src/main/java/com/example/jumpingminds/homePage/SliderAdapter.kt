@@ -50,7 +50,7 @@ class SliderAdapter(slideList: ArrayList<Beer>) :
             Picasso.with(viewHolder.itemView.context).load(beer.image_url)
                 .into(viewHolder.imageView)
             viewHolder.beerName.text = beer.name
-            viewHolder.beerVolume.text = beer.abv.toString()
+            viewHolder.beerVolume.text = beer.abv.toString() + "%"
 //            viewHolder.beerName.text=viewHolder.itemView
         }
     }

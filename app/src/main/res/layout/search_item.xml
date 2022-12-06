@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="150dp"
-    android:layout_height="250dp"
-    android:layout_margin="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
 
         <ImageView
             android:id="@+id/beerImage"
-            android:layout_width="match_parent"
+            android:layout_width="180dp"
             android:layout_height="180dp"
             android:paddingTop="15dp"
             android:scaleType="centerInside"
@@ -20,39 +20,44 @@
 
         <TextView
             android:id="@+id/beerName"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/purple_700"
+            android:layout_marginTop="20dp"
             android:ellipsize="end"
             android:hint="Name"
             android:maxEms="12"
             android:maxLines="1"
             android:paddingStart="10dp"
-            app:layout_constraintBottom_toTopOf="@id/beerDate"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/beerImage"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/beerDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/purple_700"
             android:hint="Brewed Date"
             android:paddingStart="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/beerImage"
+            app:layout_constraintTop_toBottomOf="@id/beerName" />
 
         <TextView
             android:id="@+id/beerVolume"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/purple_700"
             android:hint="v/v"
+            android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:textAlignment="textEnd"
-            app:layout_constraintBottom_toBottomOf="@id/beerDate"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@id/beerDate" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/beerImage"
+            app:layout_constraintTop_toBottomOf="@id/beerDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
