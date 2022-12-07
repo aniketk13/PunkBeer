@@ -89,7 +89,7 @@ class HomeFragment : Fragment() {
 //                        viewModel.insertBeer(signature)
                         findNavController().navigate(
                             HomeFragmentDirections.actionHomeFragmentToBeerDetails(
-                                signature.id
+                                signature.beerId
                             )
                         )
                     }

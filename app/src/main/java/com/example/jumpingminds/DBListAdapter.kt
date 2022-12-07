@@ -1,5 +1,6 @@
 package com.example.jumpingminds
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ class DBListAdapter(
 //        Log.i("helloabc",signature.image_url.toUri().toString())
 
         holder.itemView.setOnClickListener {
+            Log.i("helloabc2", position.toString())
             itemClickListener.onItemClick(signatureList[position])
         }
     }
