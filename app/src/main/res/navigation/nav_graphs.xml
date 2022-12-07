@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_beer_details">
         <argument
             android:name="id"
-            app:argType="string" />
+            app:argType="integer" />
         <action
             android:id="@+id/action_beerDetails_to_homeFragment"
             app:destination="@id/homeFragment" />

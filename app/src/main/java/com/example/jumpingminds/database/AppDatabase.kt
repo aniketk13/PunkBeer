@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 
-@TypeConverters(DateConverter::class)
-@Database(entities = [PunkEntity::class], version = 1, exportSchema = false)
+@Database(entities = [PunkEntity::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun noteDao(): PunkDao
+    abstract fun punkdao(): PunkDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null
@@ -18,7 +16,8 @@ abstract class AppDatabase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(AppDatabase::class) {
                     INSTANCE =
-                        Room.databaseBuilder(context, AppDatabase::class.java, "Punk.db").build()
+                        Room.databaseBuilder(context, AppDatabase::class.java, "Punk.db")
+                            .fallbackToDestructiveMigration().build()
                 }
             }
             return INSTANCE

@@ -24,7 +24,7 @@ class BeerDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBeerDetailsBinding.inflate(inflater, container, false)
-        Log.i("helloabc", args.id)
+//        Log.i("helloabc", args.id)
         viewModel = ViewModelProvider(requireActivity())[BeerDetailsViewModel::class.java]
         viewModel.getBeerById(args.id)
 

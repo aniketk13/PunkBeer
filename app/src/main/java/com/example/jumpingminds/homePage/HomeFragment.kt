@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.jumpingminds.DBListAdapter
 import com.example.jumpingminds.R
 import com.example.jumpingminds.RecyclerAdapter
 import com.example.jumpingminds.api.models.Beer
+import com.example.jumpingminds.database.PunkEntity
 import com.example.jumpingminds.databinding.FragmentHomeBinding
 import com.smarteist.autoimageslider.SliderView
 
@@ -68,6 +70,7 @@ class HomeFragment : Fragment() {
                 RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
                     override fun onItemClick(signature: Beer) {
 //                    Log.i("helloabc",signature.id)
+                        viewModel.insertBeer(signature)
                         findNavController().navigate(
                             HomeFragmentDirections.actionHomeFragmentToBeerDetails(
                                 signature.id
@@ -79,11 +82,11 @@ class HomeFragment : Fragment() {
             binding.recyclerView2.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
-        viewModel.requests.observe(requireActivity()) {
+        viewModel.beerListDB?.observe(requireActivity()) {
             binding.recyclerView.adapter =
-                RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
-                    override fun onItemClick(signature: Beer) {
-//                    Log.i("helloabc",signature.id)
+                DBListAdapter(ArrayList(it), object : DBListAdapter.ItemClickListener {
+                    override fun onItemClick(signature: PunkEntity) {
+//                        viewModel.insertBeer(signature)
                         findNavController().navigate(
                             HomeFragmentDirections.actionHomeFragmentToBeerDetails(
                                 signature.id
@@ -94,11 +97,27 @@ class HomeFragment : Fragment() {
                 })
             binding.recyclerView.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        }
+        viewModel.requests.observe(requireActivity()) {
+//            binding.recyclerView.adapter =
+//                RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
+//                    override fun onItemClick(signature: Beer) {
+//                        viewModel.insertBeer(signature)
+//                        findNavController().navigate(
+//                            HomeFragmentDirections.actionHomeFragmentToBeerDetails(
+//                                signature.id
+//                            )
+//                        )
+//                    }
+//
+//                })
+//            binding.recyclerView.layoutManager =
+//                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
             binding.recyclerView3.adapter =
                 RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
                     override fun onItemClick(signature: Beer) {
-//                    Log.i("helloabc",signature.id)
+                        viewModel.insertBeer(signature)
                         findNavController().navigate(
                             HomeFragmentDirections.actionHomeFragmentToBeerDetails(
                                 signature.id
