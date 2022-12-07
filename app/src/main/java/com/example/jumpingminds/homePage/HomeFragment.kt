@@ -64,25 +64,50 @@ class HomeFragment : Fragment() {
         })
         viewModel.getBeerByABV()
         viewModel.beerABV.observe(requireActivity()) {
-            binding.recyclerView2.adapter = RecyclerAdapter(it,object :RecyclerAdapter.ItemClickListener{
-                override fun onItemClick(signature: Beer) {
+            binding.recyclerView2.adapter =
+                RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
+                    override fun onItemClick(signature: Beer) {
 //                    Log.i("helloabc",signature.id)
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBeerDetails(signature.id))
-                }
+                        findNavController().navigate(
+                            HomeFragmentDirections.actionHomeFragmentToBeerDetails(
+                                signature.id
+                            )
+                        )
+                    }
 
-            })
+                })
             binding.recyclerView2.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
         viewModel.requests.observe(requireActivity()) {
-            binding.recyclerView.adapter = RecyclerAdapter(it,object :RecyclerAdapter.ItemClickListener{
-                override fun onItemClick(signature: Beer) {
+            binding.recyclerView.adapter =
+                RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
+                    override fun onItemClick(signature: Beer) {
 //                    Log.i("helloabc",signature.id)
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBeerDetails(signature.id))
-                }
+                        findNavController().navigate(
+                            HomeFragmentDirections.actionHomeFragmentToBeerDetails(
+                                signature.id
+                            )
+                        )
+                    }
 
-            })
+                })
             binding.recyclerView.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+            binding.recyclerView3.adapter =
+                RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
+                    override fun onItemClick(signature: Beer) {
+//                    Log.i("helloabc",signature.id)
+                        findNavController().navigate(
+                            HomeFragmentDirections.actionHomeFragmentToBeerDetails(
+                                signature.id
+                            )
+                        )
+                    }
+
+                })
+            binding.recyclerView3.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
             // on below line we are initializing our slider adapter and adding our list to it.

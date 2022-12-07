@@ -15,7 +15,7 @@ class BeerDetailsViewModel : ViewModel() {
     val requests: LiveData<ArrayList<Beer>>
         get() = _requests
 
-    fun getBeerById(id:String){
+    fun getBeerById(id: String) {
         viewModelScope.launch {
             try {
                 val response = RetrofitInstance.api.getBeerById(id)
