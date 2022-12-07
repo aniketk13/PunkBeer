@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jumpingminds.R
 import com.example.jumpingminds.RecyclerAdapter
+import com.example.jumpingminds.api.models.Beer
 import com.example.jumpingminds.databinding.FragmentHomeBinding
 import com.smarteist.autoimageslider.SliderView
 
@@ -63,12 +64,24 @@ class HomeFragment : Fragment() {
         })
         viewModel.getBeerByABV()
         viewModel.beerABV.observe(requireActivity()) {
-            binding.recyclerView2.adapter = RecyclerAdapter(it)
+            binding.recyclerView2.adapter = RecyclerAdapter(it,object :RecyclerAdapter.ItemClickListener{
+                override fun onItemClick(signature: Beer) {
+//                    Log.i("helloabc",signature.id)
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBeerDetails(signature.id))
+                }
+
+            })
             binding.recyclerView2.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
         viewModel.requests.observe(requireActivity()) {
-            binding.recyclerView.adapter = RecyclerAdapter(it)
+            binding.recyclerView.adapter = RecyclerAdapter(it,object :RecyclerAdapter.ItemClickListener{
+                override fun onItemClick(signature: Beer) {
+//                    Log.i("helloabc",signature.id)
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBeerDetails(signature.id))
+                }
+
+            })
             binding.recyclerView.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 

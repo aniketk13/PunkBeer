@@ -2,6 +2,7 @@ package com.example.jumpingminds.api
 
 import com.example.jumpingminds.api.models.Beer
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PunkAPI {
@@ -28,4 +29,7 @@ interface PunkAPI {
 
     @GET("/v2/beers")
     suspend fun getBeerByABV(@Query("abv_gt") abv_gt: String): ArrayList<Beer>
+
+    @GET("/v2/beers/")
+    suspend fun getBeerById(@Query("ids") ids:String):ArrayList<Beer>
 }
