@@ -106,9 +106,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/andika"
                 android:text="Previously Viewed Items"
-                android:textFontWeight="@integer/material_motion_duration_medium_2"
-                android:textSize="20sp"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/recyclerView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sliderCard" />
@@ -118,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintTop_toBottomOf="@id/previousViewedItemsHeader" />
 
             <TextView
@@ -126,8 +127,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/andika"
                 android:text="Premium Strong Collection"
-                android:textSize="20sp"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 
@@ -136,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintTop_toBottomOf="@id/abvHeader" />
 
             <TextView
@@ -144,8 +147,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:text="All Beers available"
-                android:textSize="20sp"
+                android:fontFamily="@font/andika"
+                android:text="All Beers Available"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerView2" />
 
@@ -154,7 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintTop_toBottomOf="@id/allBeerHeader" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

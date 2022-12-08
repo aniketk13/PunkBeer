@@ -61,17 +61,25 @@ class BeerDetails : Fragment() {
                     .append(it[0].abv.toString()).append("%")
             binding.descriptionBeerTagline.text = it[0].tagline
             binding.descriptionBeerDescription.text =
-                SpannableStringBuilder().bold { append("Product Description:   ") }
+                SpannableStringBuilder().bold {
+                    underline { append("Product Description:") }.append(
+                        "   "
+                    )
+                }
                     .append(it[0].description)
             var food_pairing = "\n"
             for (i in it[0].food_pairing) {
                 food_pairing = "$food_pairing • $i \n"
             }
             binding.descriptionBeerFoodPairing.text =
-                SpannableStringBuilder().bold { append("Best When Paired With:   ") }
+                SpannableStringBuilder().bold {
+                    underline { append("Best When Paired With:") }.append(
+                        "   "
+                    )
+                }
                     .append(food_pairing)
             binding.descriptionBeerBrewingTips.text =
-                SpannableStringBuilder().bold { append("Some Brewing Tips:   ") }
+                SpannableStringBuilder().bold { underline { append("Some Brewing Tips:") }.append("   ") }
                     .append(it[0].brewers_tips)
             var malt = "\n"
             var hops = "\n"

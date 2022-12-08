@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JumpingMinds</string>
+    <string name="app_name">Punk Beer</string>
     <string-array name="PunkFilter">
         <item>Beer</item>
         <item>Food</item>
