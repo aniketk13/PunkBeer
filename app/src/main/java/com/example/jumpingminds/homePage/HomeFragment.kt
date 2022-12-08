@@ -99,20 +99,6 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         }
         viewModel.requests.observe(requireActivity()) {
-//            binding.recyclerView.adapter =
-//                RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
-//                    override fun onItemClick(signature: Beer) {
-//                        viewModel.insertBeer(signature)
-//                        findNavController().navigate(
-//                            HomeFragmentDirections.actionHomeFragmentToBeerDetails(
-//                                signature.id
-//                            )
-//                        )
-//                    }
-//
-//                })
-//            binding.recyclerView.layoutManager =
-//                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
             binding.recyclerView3.adapter =
                 RecyclerAdapter(it, object : RecyclerAdapter.ItemClickListener {
@@ -130,7 +116,17 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
             // on below line we are initializing our slider adapter and adding our list to it.
-            sliderAdapter = SliderAdapter(it)
+            sliderAdapter = SliderAdapter(it, object : SliderAdapter.ItemClickListener {
+                override fun onItemClick(signature: Beer) {
+                    viewModel.insertBeer(signature)
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToBeerDetails(
+                            signature.id
+                        )
+                    )
+                }
+
+            })
             // on below line we are setting auto cycle direction for our slider view from left to right.
             binding.imageSlider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
 

@@ -12,8 +12,13 @@ import com.squareup.picasso.Picasso
 
 // on below line we are creating a class for slider
 // adapter and passing our array list to it.
-class SliderAdapter(slideList: ArrayList<Beer>) :
+class SliderAdapter(
+    slideList: ArrayList<Beer>, private val itemClickListener: SliderAdapter.ItemClickListener
+) :
     SliderViewAdapter<SliderAdapter.SliderViewHolder>() {
+    interface ItemClickListener {
+        fun onItemClick(signature: Beer)
+    }
 
     // on below line we are creating a
     // new array list and initializing it.
@@ -51,6 +56,9 @@ class SliderAdapter(slideList: ArrayList<Beer>) :
                 .into(viewHolder.imageView)
             viewHolder.beerName.text = beer.name
             viewHolder.beerVolume.text = beer.abv.toString() + "%"
+            viewHolder.itemView.setOnClickListener {
+                itemClickListener.onItemClick(sliderList[position])
+            }
 //            viewHolder.beerName.text=viewHolder.itemView
         }
     }

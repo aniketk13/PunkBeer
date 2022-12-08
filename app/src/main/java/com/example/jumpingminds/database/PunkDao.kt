@@ -10,6 +10,6 @@ interface PunkDao {
     @Insert
     fun insertBeer(entity: PunkEntity)
 
-    @Query("SELECT * FROM PunkBeer ORDER BY id DESC")
+    @Query("SELECT * FROM PunkBeer ORDER BY id DESC LIMIT 10")
     fun getAllBeers(): LiveData<List<PunkEntity>>
 }

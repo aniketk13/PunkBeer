@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.jumpingminds.api.models.Beer
 import com.example.jumpingminds.databinding.FragmentBeerDetailsBinding
 import com.example.jumpingminds.homePage.SliderAdapter
 import com.smarteist.autoimageslider.SliderView
@@ -33,7 +34,10 @@ class BeerDetails : Fragment() {
             it.add(it[0])
             it.add(it[1])
             // on below line we are initializing our slider adapter and adding our list to it.
-            sliderAdapter = SliderAdapter(it)
+            sliderAdapter = SliderAdapter(it, object : SliderAdapter.ItemClickListener {
+                override fun onItemClick(signature: Beer) {
+                }
+            })
             // on below line we are setting auto cycle direction for our slider view from left to right.
             binding.descriptionBeerImageSlider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
             // on below line we are setting adapter for our slider.
