@@ -1,11 +1,14 @@
 package com.example.jumpingminds
 
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.text.bold
+import androidx.core.text.underline
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -50,10 +53,40 @@ class BeerDetails : Fragment() {
             binding.descriptionBeerImageSlider.startAutoCycle()
 
             binding.descriptionBeerName.text = it[0].name
-            binding.descriptionBeerBrewedDate.text = it[0].first_brewed
-            binding.descriptionBeerVolume.text = it[0].abv.toString() + "%"
+            binding.descriptionBeerBrewedDate.text =
+                SpannableStringBuilder().bold { append("First Brewed On:   ") }
+                    .append(it[0].first_brewed)
+            binding.descriptionBeerVolume.text =
+                SpannableStringBuilder().bold { append("Alcohol Concentration:   ") }
+                    .append(it[0].abv.toString()).append("%")
             binding.descriptionBeerTagline.text = it[0].tagline
-            binding.descriptionBeerDescription.text = it[0].description
+            binding.descriptionBeerDescription.text =
+                SpannableStringBuilder().bold { append("Product Description:   ") }
+                    .append(it[0].description)
+            var food_pairing = "\n"
+            for (i in it[0].food_pairing) {
+                food_pairing = "$food_pairing • $i \n"
+            }
+            binding.descriptionBeerFoodPairing.text =
+                SpannableStringBuilder().bold { append("Best When Paired With:   ") }
+                    .append(food_pairing)
+            binding.descriptionBeerBrewingTips.text =
+                SpannableStringBuilder().bold { append("Some Brewing Tips:   ") }
+                    .append(it[0].brewers_tips)
+            var malt = "\n"
+            var hops = "\n"
+            var yeast = it[0].ingredients.yeast
+            for (i in it[0].ingredients.malt) {
+                malt = "$malt • ${i.name} - ${i.amount.value} ${i.amount.unit} \n"
+            }
+
+            for (i in it[0].ingredients.hops) {
+                hops = "$hops • ${i.name} - ${i.amount.value} ${i.amount.unit} \n"
+            }
+            binding.descriptionBeerIngredients.text =
+                SpannableStringBuilder().bold { underline { append("Ingredients:\n") }.append("\nMalt:") }
+                    .append(malt).bold { append("\nHops:") }.append(hops)
+                    .bold { append("\nYeast:   ") }.append(yeast)
 
 
         }

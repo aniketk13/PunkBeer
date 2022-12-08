@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,70 +7,113 @@
     android:layout_margin="10dp"
     tools:context=".BeerDetails">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/descriptionBeerSlider"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="6dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/descriptionBeerImageSlider"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/descriptionBeerSlider"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginVertical="5dp"
-            app:sliderAnimationDuration="600"
-            app:sliderAutoCycleDirection="back_and_forth"
-            app:sliderAutoCycleEnabled="true"
-            app:sliderIndicatorAnimationDuration="600"
-            app:sliderIndicatorGravity="center_horizontal|bottom"
-            app:sliderIndicatorMargin="15dp"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorPadding="3dp"
-            app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#5A5A5A"
-            app:sliderIndicatorUnselectedColor="#FFF"
-            app:sliderScrollTimeInSec="1"
-            app:sliderStartAutoCycle="true" />
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.cardview.widget.CardView>
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/descriptionBeerImageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginVertical="5dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
 
-    <TextView
-        android:id="@+id/descriptionBeerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionBeerSlider" />
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/descriptionBeerTagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionBeerName" />
+        <TextView
+            android:id="@+id/descriptionBeerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerSlider" />
 
-    <TextView
-        android:id="@+id/descriptionBeerBrewedDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionBeerTagline" />
+        <TextView
+            android:id="@+id/descriptionBeerTagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerName" />
 
-    <TextView
-        android:id="@+id/descriptionBeerVolume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionBeerBrewedDate" />
+        <TextView
+            android:id="@+id/descriptionBeerBrewedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerTagline" />
 
-    <TextView
-        android:id="@+id/descriptionBeerDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionBeerVolume" />
+        <TextView
+            android:id="@+id/descriptionBeerVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerBrewedDate" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/descriptionBeerDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerVolume" />
+
+        <TextView
+            android:id="@+id/descriptionBeerFoodPairing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerBrewingTips" />
+
+        <TextView
+            android:id="@+id/descriptionBeerBrewingTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerDescription" />
+
+        <TextView
+            android:id="@+id/descriptionBeerIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionBeerFoodPairing" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

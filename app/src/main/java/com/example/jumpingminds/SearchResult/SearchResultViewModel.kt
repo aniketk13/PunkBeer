@@ -1,15 +1,22 @@
 package com.example.jumpingminds.SearchResult
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jumpingminds.api.RetrofitInstance
 import com.example.jumpingminds.api.models.Beer
+import com.example.jumpingminds.database.AppDatabase
+import com.example.jumpingminds.database.PunkEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class SearchResultViewModel : ViewModel() {
+class SearchResultViewModel(app: Application) : AndroidViewModel(app) {
+    private val database = AppDatabase.getInstance(app)
+
     private val _requests: MutableLiveData<ArrayList<Beer>> = MutableLiveData()
     val requests: LiveData<ArrayList<Beer>>
         get() = _requests
@@ -26,6 +33,16 @@ class SearchResultViewModel : ViewModel() {
                 Log.i("helloabc", "inside view model")
             } catch (e: Exception) {
                 Log.i("Error", e.toString())
+            }
+        }
+    }
+
+    fun insertBeer(beer: Beer) {
+        val entity = PunkEntity(0, beer.id, beer.name, beer.first_brewed, beer.image_url, beer.abv)
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                database?.punkdao()?.insertBeer(entity)
+                Log.i("helloabc", "data inserted")
             }
         }
     }

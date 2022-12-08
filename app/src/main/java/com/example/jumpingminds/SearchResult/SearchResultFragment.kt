@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.jumpingminds.api.models.Beer
 import com.example.jumpingminds.databinding.FragmentSearchResultBinding
 
 class SearchResultFragment : Fragment() {
@@ -33,7 +34,18 @@ class SearchResultFragment : Fragment() {
             "Food" -> viewModel.getBeerByFood(searchText)
         }
         viewModel.requests.observe(requireActivity()) {
-            binding.recyclerView.adapter = SearchResultAdapter(it)
+            binding.recyclerView.adapter =
+                SearchResultAdapter(it, object : SearchResultAdapter.ItemClickListener {
+                    override fun onItemClick(signature: Beer) {
+                        viewModel.insertBeer(signature)
+                        findNavController().navigate(
+                            SearchResultFragmentDirections.actionSearchResultFragmentToBeerDetails(
+                                signature.id
+                            )
+                        )
+                    }
+
+                })
             binding.recyclerView.layoutManager = LinearLayoutManager(
                 activity, LinearLayoutManager.VERTICAL, false
             )

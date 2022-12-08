@@ -12,13 +12,13 @@ import com.squareup.picasso.Picasso
 
 class SearchResultAdapter(
     private val signatureList: ArrayList<Beer>,
-//    private val itemClickListener: ItemClickListener
+    private val itemClickListener: ItemClickListener
 ) :
     RecyclerView.Adapter<SearchResultAdapter.ViewHolder>() {
 
-//    interface ItemClickListener {
-//        fun onItemClick(signature: Beer, position: Int)
-//    }
+    interface ItemClickListener {
+        fun onItemClick(signature: Beer)
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val beerImage: ImageView = itemView.findViewById(R.id.beerImage)
@@ -43,9 +43,9 @@ class SearchResultAdapter(
         Picasso.with(holder.beerImage.context).load(signature.image_url).into(holder.beerImage)
 //        Log.i("helloabc",signature.image_url.toUri().toString())
 
-//        holder.itemView.setOnClickListener {
-//            itemClickListener.onItemClick(signatureList[position], position)
-//        }
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(signatureList[position])
+        }
     }
 
     override fun getItemCount(): Int {
