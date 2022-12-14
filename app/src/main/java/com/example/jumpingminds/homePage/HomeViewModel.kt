@@ -69,7 +69,11 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 if(database?.punkdao()?.searchBeer(beer.id)==0)
+                    database.punkdao().insertBeer(entity)
+                else{
+                    database?.punkdao()?.deleteQuery(beer.id)
                     database?.punkdao()?.insertBeer(entity)
+                }
                 Log.i("helloabc", "data inserted")
             }
         }
