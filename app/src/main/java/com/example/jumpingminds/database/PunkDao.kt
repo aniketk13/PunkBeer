@@ -12,4 +12,7 @@ interface PunkDao {
 
     @Query("SELECT * FROM PunkBeer ORDER BY id DESC LIMIT 10")
     fun getAllBeers(): LiveData<List<PunkEntity>>
+
+    @Query("SELECT COUNT() FROM PunkBeer WHERE beerId=:beerId")
+    fun searchBeer(beerId:Int):Int
 }

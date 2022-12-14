@@ -68,7 +68,8 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
         val entity = PunkEntity(0, beer.id, beer.name, beer.first_brewed, beer.image_url, beer.abv)
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                database?.punkdao()?.insertBeer(entity)
+                if(database?.punkdao()?.searchBeer(beer.id)==0)
+                    database?.punkdao()?.insertBeer(entity)
                 Log.i("helloabc", "data inserted")
             }
         }
